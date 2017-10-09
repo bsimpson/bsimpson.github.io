@@ -58,11 +58,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var AppComponent = (function () {
-    function AppComponent() {
+let AppComponent = class AppComponent {
+    constructor() {
         this.calculateGrid();
     }
-    AppComponent.prototype.calculateGrid = function () {
+    calculateGrid() {
         this.time = new Date();
         this.hours = this.splitTimeParts(this.twelveHour(this.time.getHours()));
         this.minutes = this.splitTimeParts(this.time.getMinutes());
@@ -73,24 +73,24 @@ var AppComponent = (function () {
         this.minutesSecond = this.fillArray(this.minutesSecond, this.minutes[1], 9);
         this.secondsFirst = this.fillArray(this.secondsFirst, this.seconds[0], 6);
         this.secondsSecond = this.fillArray(this.secondsSecond, this.seconds[1], 9);
-    };
-    AppComponent.prototype.splitTimeParts = function (time) {
+    }
+    splitTimeParts(time) {
         // Take the time and split into first and second digit
-        var parts = time.toString().split('');
+        const parts = time.toString().split('');
         // Lpad with 0 is single digit
         if (parts.length < 2) {
             parts.unshift('0');
         }
-        var _a = parts.slice(), first = _a[0], last = _a[1];
+        const [first, last] = [...parts];
         return [parseInt(first, 10), parseInt(last, 10)];
-    };
-    AppComponent.prototype.twelveHour = function (hour) {
+    }
+    twelveHour(hour) {
         if (hour === 0 || hour === 12) {
             return 12;
         }
         return hour % 12;
-    };
-    AppComponent.prototype.fillArray = function (array, numberToFill, total) {
+    }
+    fillArray(array, numberToFill, total) {
         if (typeof array === 'undefined') {
             array = new Array(total);
             array.fill(false);
@@ -103,16 +103,15 @@ var AppComponent = (function () {
             array[this.random(total)] = true;
         }
         return array;
-    };
-    AppComponent.prototype.random = function (max) {
+    }
+    random(max) {
         max = Math.floor(max);
         return Math.floor(Math.random() * (max));
-    };
-    AppComponent.prototype.ngOnChanges = function (changes) {
+    }
+    ngOnChanges(changes) {
         this.calculateGrid();
-    };
-    return AppComponent;
-}());
+    }
+};
 AppComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'app-root',
@@ -145,11 +144,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AppModule = (function () {
-    function AppModule() {
-    }
-    return AppModule;
-}());
+let AppModule = class AppModule {
+};
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["L" /* NgModule */])({
         declarations: [
@@ -172,15 +168,16 @@ AppModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 // The file contents for the current environment will overwrite these during build.
-var environment = {
+const environment = {
     production: false
 };
+/* harmony export (immutable) */ __webpack_exports__["a"] = environment;
+
 //# sourceMappingURL=environment.js.map
 
 /***/ }),
@@ -202,7 +199,7 @@ if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment *
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_20" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
-    .catch(function (err) { return console.log(err); });
+    .catch(err => console.log(err));
 //# sourceMappingURL=main.js.map
 
 /***/ }),

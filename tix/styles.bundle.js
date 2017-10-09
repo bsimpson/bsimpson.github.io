@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n.copyright {\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  -webkit-transform: translate(-5%, -50%);\n          transform: translate(-5%, -50%);\n}\n\n.title {\n  text-align: center;\n  color: #333;\n}\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n\n.copyright {\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  -webkit-transform: translate(-5%, -50%);\n          transform: translate(-5%, -50%);\n}\n\n.source {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  -webkit-transform: translate(5%, -50%);\n          transform: translate(5%, -50%);\n}\n\n.title {\n  text-align: center;\n  color: #333;\n}\n", ""]);
 
 // exports
 
